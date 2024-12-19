@@ -1,0 +1,37 @@
+// Instructions:
+// 1. Find the statement that causes the compilation error.
+// 2. Determine the output if that statement is removed.
+
+// Question 1
+class A {
+    public void test() { 
+        System.out.print("A");
+    }
+}
+class B extends A { 
+    public void test() { 
+        System.out.print("B");
+    }
+}
+
+// Answer: There were no ERROR in Question 1 because it defines both class A and B properly.
+// Expected Output if the error line is removed: No Output
+// Explanation: There is no expected output because there is no main method.
+
+// Question 2
+public class C extends A {
+    public void test() {
+        System.out.print("C");
+    }
+    public static void main (String[] args) {
+        A b1 = new A();
+        A b2 = new C();
+        b1 = (A)b2;
+        A b3 = (B)b2; // This is the error
+        b1.test();
+        b2.test();
+    }
+}
+
+// Answer: The ERROR is "A b3 = (B)b2;" because b2 is an instance of C, not B.
+// Expected Output if the error line is removed: CC
